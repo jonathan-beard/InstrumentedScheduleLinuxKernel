@@ -1,0 +1,122 @@
+##Generic installs necessaudo make instally:
+sudo apt-get install make htop gcc
+
+sudo apt-get install libopenmpi-dev openmpi-bin 
+
+#for some benchmarks scientific:
+sudo apt-get install gfortran
+
+
+for HPL 
+ sudo apt-get install libatlas-base-dev libmpich-dev gfortran
+
+for Parsecommps
+sudo apt-get install libssl-dev
+#INCLUDED #sudo apt-get install gsl-bin libgsl-dev
+cd ${ROOT}/parseclibs/
+./buildlibs.sh gsl
+ sudo apt-get install libjpeg-dev 
+
+# MPICH 3 SETUP
+- install different compilers and libraries
+./configure --enable-static --prefix=/usr/local/mpich3
+make; sudo make install
+
+
+#HPL SETUP
+
+tar xf hpl-2.1.tar.gz
+cd hpl-2.1/setup
+sh make_generic
+cd ..
+cp setup/Make.UNKNOWN Make.arm64
+
+**********************
+TOUCH        = touch
+#
+# ----------------------------------------------------------------------
+# - Platform identifier ------------------------------------------------
+# ----------------------------------------------------------------------
+#
+ARCH         = arm64
+#
+# ----------------------------------------------------------------------
+# - HPL Directory Structure / HPL library ------------------------------
+# ----------------------------------------------------------------------
+#
+TOPdir       = /home/ubuntu/projects/hpl
+
+********************
+
+wget mpi: http://www.mpich.org/static/downloads/3.2/mpich-3.2.tar.gz
+
+cd mpi**
+./configure
+make -j X
+
+then back to hpl
+# ----------------------------------------------------------------------
+# - Platform identifier ------------------------------------------------
+# ----------------------------------------------------------------------
+#
+ARCH         = arm64
+#
+# ----------------------------------------------------------------------
+# - HPL Directory Structure / HPL library ------------------------------
+# ----------------------------------------------------------------------
+#
+TOPdir       = /home/ubuntu/projects/hpl
+INCdir       = $(TOPdir)/include
+BINdir       = $(TOPdir)/bin/$(ARCH)
+LIBdir       = $(TOPdir)/lib/$(ARCH)
+#
+HPLlib       = $(LIBdir)/libhpl.a
+#
+# ----------------------------------------------------------------------
+# - Message Passing library (MPI) --------------------------------------
+# ----------------------------------------------------------------------
+# MPinc tells the  C  compiler where to find the Message Passing library
+# header files,  MPlib  is defined  to be the name of  the library to be
+# used. The variable MPdir is only used for defining MPinc and MPlib.
+#
+#MPdir        =  /home/ubuntu/projects/mpich
+#MPinc        = -I $(MPdir)/include
+#MPlib        = $(MPdir)/lib/libmpich.a //COMMENT OUT STUFF AND USE OPENMPI FROM REPOS
+#
+# ----------------------------------------------------------------------
+# - Linear Algebra library (BLAS or VSIPL) -----------------------------
+# ----------------------------------------------------------------------
+# LAinc tells the  C  compiler where to find the Linear Algebra  library
+# header files,  LAlib  is defined  to be the name of  the library to be
+# used. The variable LAdir is only used for defining LAinc and LAlib.
+#
+LAdir        = /usr/lib/atlas-base
+LAinc        = $(LAdir)/libf77blas.a $(LAdir)/libatlas.a
+LAlib        = -lblas
+#
+
+#RUN HP LINPACK
+  125  vim HPL.dat 
+  126  ./xhpl
+  127  mpirun -np 8 ./xhpl
+
+
+#INSTALLING OPENMPI LOCALLY
+cd openmpi-1.8.4 
+mkdir install
+./configure —prefix=$PWD/install
+make -j 16 && make install
+
+export PATH=/home/.../openmpi-1.8.4-gcc-4.9.1/openmpi-1.8.4/install/bin:$PATH
+export LD_LIBRARY_PATH=/home/.../openmpi-1.8.4-gcc-4.9.1/openmpi-1.8.4/install/lib:$LD_LIBRARY_PATH
+ 
+#Running omp-csr                          
+export OMP_NUM_THREADS=8
+sudo -E perf stat -B ./omp-csr -s 18 -V 
+
+#configuring hpgmg
+ubuntu@softiron-7:~/hpgmg$ ./configure --arch aarch64 --CC mpicc --CFLAGS '-march=armv8-a+fp+simd -O3 -mcpu=cortex-a57 -fopenmp' --fe
+#Running with parameters 4 4  but taking too long
+./hpgmg-fv 4 4 
+
+

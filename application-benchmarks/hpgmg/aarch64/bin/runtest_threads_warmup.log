@@ -1,0 +1,17 @@
+
+
+********************************************************************************
+***                            HPGMG-FV Benchmark                            ***
+********************************************************************************
+1 MPI Tasks of 8 threads
+
+
+===== Benchmark setup ==========================================================
+
+attempting to create a 192^3 level from 27 x 64^3 boxes distributed among 1 tasks...
+  boundary condition = BC_DIRICHLET
+  Decomposing level via Z-mort ordering... done
+  Allocating vectors... done
+  Calculating boxes per process... target=27.000, max=27
+  Creating Poisson (a=0.000000, b=1.000000) test problem
+  calculating D^{-1} exactly for level h=5.208333e-03 using  64 colors...  

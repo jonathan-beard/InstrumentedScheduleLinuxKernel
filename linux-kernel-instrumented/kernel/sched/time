@@ -1,0 +1,14 @@
+debug.c:1049:	  switch (mig_data->reason) {
+debug.c:1076:		     mig_data->from, mig_data->to, mig_data->time,
+debug.c:1077:		     jiffies_to_msecs(mig_data->time), reason);*/
+debug.c:1079:	  		     mig_data->from, mig_data->to, mig_data->time,
+debug.c:1081:/*	  if(mig_data->reason == 5)
+debug.c:1083:		       mig_data->from, mig_data->to, mig_data->time,
+debug.c:1084:		       jiffies_to_msecs(mig_data->time));*/
+core.c:1378:		mig_data->from = task_cpu(p);
+core.c:1379:		mig_data->to = new_cpu;
+core.c:1380:		mig_data->time = get_jiffies_64();
+core.c:1384:		//mig_data->time = cur_time.tv_nsec + 10^9 * cur_time.tv_sec;
+core.c:1385:		//mig_data->time = cur_time.tv_sec * 1000 + cur_time.tv_nsec / 10;
+core.c:1386:		mig_data->reason = p->se.migration_reason;
+core.c:1395:		    list_add(&mig_data->migrations, &p->se.migrations);
