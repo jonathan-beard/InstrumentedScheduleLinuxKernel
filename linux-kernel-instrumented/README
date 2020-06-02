@@ -1,0 +1,12 @@
+Instrumented Linux kernel
+============
+
+This should be ready to go. Refer to confluence page:
+https://confluence.arm.com/display/~jonbea01/Kernel+Instrumentation 
+for details and 
+https://confluence.arm.com/display/~jonbea01/Heterogeneous+Systems+Threading+Study
+for the study.
+
+Included are three deb images ready to be installed with dpkg -i and used.
+
+Compiled with linaro toolchain, command is make -j 8 deb-pkg 
