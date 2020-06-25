@@ -37,67 +37,69 @@
 
 
 /* Instrumentation Mod */
+#define INSTRUMENT_MOD_CORE_SIZE 16
+#define INSTRUMENT_MOD_CORE_BUFF {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 
-extern unsigned long long int report_wraparound_addtolist_counter[8];
+extern unsigned long long int report_wraparound_addtolist_counter[INSTRUMENT_MOD_CORE_SIZE];
 
 
 /* Instrumentation Mod  - Wraparound stuff*/
-extern unsigned long long int wraparound_sum_of_times[8];
-extern unsigned long long int wraparound_sum_of_times_squared[8];
+extern unsigned long long int wraparound_sum_of_times[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int wraparound_sum_of_times_squared[INSTRUMENT_MOD_CORE_SIZE];
 
-extern unsigned long long int wraparound_sum_of_instructions[8];
-extern unsigned long long int wraparound_sum_of_instructions_squared[8];
+extern unsigned long long int wraparound_sum_of_instructions[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int wraparound_sum_of_instructions_squared[INSTRUMENT_MOD_CORE_SIZE];
 
-extern unsigned long long int wraparound_sum_of_L1acc[8];
-extern unsigned long long int wraparound_sum_of_L1acc_squared[8];
-extern unsigned long long int wraparound_sum_of_L1ref[8];
-extern unsigned long long int wraparound_sum_of_L1ref_squared[8];
+extern unsigned long long int wraparound_sum_of_L1acc[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int wraparound_sum_of_L1acc_squared[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int wraparound_sum_of_L1ref[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int wraparound_sum_of_L1ref_squared[INSTRUMENT_MOD_CORE_SIZE];
 
-extern unsigned long long int wraparound_sum_of_L2acc[8];
-extern unsigned long long int wraparound_sum_of_L2acc_squared[8];
-extern unsigned long long int wraparound_sum_of_L2ref[8];
-extern unsigned long long int wraparound_sum_of_L2ref_squared[8];
+extern unsigned long long int wraparound_sum_of_L2acc[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int wraparound_sum_of_L2acc_squared[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int wraparound_sum_of_L2ref[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int wraparound_sum_of_L2ref_squared[INSTRUMENT_MOD_CORE_SIZE];
 
 
-extern unsigned long long int scheduler_sum_of_times[8];
-extern unsigned long long int scheduler_sum_of_times_squared[8];
+extern unsigned long long int scheduler_sum_of_times[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int scheduler_sum_of_times_squared[INSTRUMENT_MOD_CORE_SIZE];
 
-extern unsigned long long int scheduler_sum_of_instructions[8];
-extern unsigned long long int scheduler_sum_of_instructions_squared[8];
+extern unsigned long long int scheduler_sum_of_instructions[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int scheduler_sum_of_instructions_squared[INSTRUMENT_MOD_CORE_SIZE];
 
-extern unsigned long long int scheduler_sum_of_L1acc[8];
-extern unsigned long long int scheduler_sum_of_L1acc_squared[8];
-extern unsigned long long int scheduler_sum_of_L1ref[8];
-extern unsigned long long int scheduler_sum_of_L1ref_squared[8];
+extern unsigned long long int scheduler_sum_of_L1acc[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int scheduler_sum_of_L1acc_squared[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int scheduler_sum_of_L1ref[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int scheduler_sum_of_L1ref_squared[INSTRUMENT_MOD_CORE_SIZE];
 
-extern unsigned long long int scheduler_sum_of_L2acc[8];
-extern unsigned long long int scheduler_sum_of_L2acc_squared[8];
-extern unsigned long long int scheduler_sum_of_L2ref[8];
-extern unsigned long long int scheduler_sum_of_L2ref_squared[8];
+extern unsigned long long int scheduler_sum_of_L2acc[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int scheduler_sum_of_L2acc_squared[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int scheduler_sum_of_L2ref[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int scheduler_sum_of_L2ref_squared[INSTRUMENT_MOD_CORE_SIZE];
 
 extern volatile int scheduler_sum_of_times_enable;
-extern volatile int have_done_begin[8];
+extern volatile int have_done_begin[INSTRUMENT_MOD_CORE_SIZE];
 extern volatile int enable_print_long;
 extern volatile int enable_system_wide_collection;
 
-extern struct scheduler_timing_data schd_timing_data[8];
-extern unsigned long long int report_scheduling_addtolist_counter[8];
+extern struct scheduler_timing_data schd_timing_data[INSTRUMENT_MOD_CORE_SIZE];
+extern unsigned long long int report_scheduling_addtolist_counter[INSTRUMENT_MOD_CORE_SIZE];
 
-extern u64 cycles_at_mig_enable[8];
-extern u64 instructions_at_mig_enable[8];
-extern u64 branches_at_mig_enable[8];
-extern u64 L1_acc_at_mig_enable[8];
-extern u64 L1_ref_at_mig_enable[8];
-extern u64 L2_acc_at_mig_enable[8];
-extern u64 L2_ref_at_mig_enable[8];
+extern u64 cycles_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 instructions_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 branches_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 L1_acc_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 L1_ref_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 L2_acc_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 L2_ref_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE];
 
-extern u64 cycles_at_mig_disable[8];
-extern u64 instructions_at_mig_disable[8];
-extern u64 branches_at_mig_disable[8];
-extern u64 L1_acc_at_mig_disable[8];
-extern u64 L1_ref_at_mig_disable[8];
-extern u64 L2_acc_at_mig_disable[8];
-extern u64 L2_ref_at_mig_disable[8];
+extern u64 cycles_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 instructions_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 branches_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 L1_acc_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 L1_ref_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 L2_acc_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE];
+extern u64 L2_ref_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE];
 
 #ifdef CONFIG_SCHEDSTATS
   /* record migrations global flags */

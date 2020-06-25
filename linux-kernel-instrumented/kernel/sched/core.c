@@ -44,62 +44,63 @@
 #include <linux/sysfs.h>
 #endif
 
+
 /* Instrumentation Mod  - Scheduler stuff*/
-unsigned long long int scheduler_sum_of_times[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int scheduler_sum_of_times_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned long long int scheduler_sum_of_times[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int scheduler_sum_of_times_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
-unsigned long long int scheduler_sum_of_instructions[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int scheduler_sum_of_instructions_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned long long int scheduler_sum_of_instructions[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int scheduler_sum_of_instructions_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
-unsigned long long int scheduler_sum_of_L1acc[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int scheduler_sum_of_L1acc_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int scheduler_sum_of_L1ref[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int scheduler_sum_of_L1ref_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned long long int scheduler_sum_of_L1acc[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int scheduler_sum_of_L1acc_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int scheduler_sum_of_L1ref[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int scheduler_sum_of_L1ref_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
-unsigned long long int scheduler_sum_of_L2acc[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int scheduler_sum_of_L2acc_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int scheduler_sum_of_L2ref[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int scheduler_sum_of_L2ref_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned long long int scheduler_sum_of_L2acc[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int scheduler_sum_of_L2acc_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int scheduler_sum_of_L2ref[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int scheduler_sum_of_L2ref_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
 /* Instrumentation Mod  - Wraparound stuff*/
-unsigned long long int wraparound_sum_of_times[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int wraparound_sum_of_times_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned long long int wraparound_sum_of_times[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int wraparound_sum_of_times_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
-unsigned long long int wraparound_sum_of_instructions[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int wraparound_sum_of_instructions_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned long long int wraparound_sum_of_instructions[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int wraparound_sum_of_instructions_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
-unsigned long long int wraparound_sum_of_L1acc[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int wraparound_sum_of_L1acc_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int wraparound_sum_of_L1ref[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int wraparound_sum_of_L1ref_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned long long int wraparound_sum_of_L1acc[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int wraparound_sum_of_L1acc_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int wraparound_sum_of_L1ref[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int wraparound_sum_of_L1ref_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
-unsigned long long int wraparound_sum_of_L2acc[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int wraparound_sum_of_L2acc_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int wraparound_sum_of_L2ref[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int wraparound_sum_of_L2ref_squared[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned long long int wraparound_sum_of_L2acc[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int wraparound_sum_of_L2acc_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int wraparound_sum_of_L2ref[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int wraparound_sum_of_L2ref_squared[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
 
-volatile int have_done_begin[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+volatile int have_done_begin[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 volatile int scheduler_sum_of_times_enable = 0;
 volatile int enable_print_long = 0;
 
 volatile int enable_system_wide_collection = 0;
 
-u64 cycles_at_mig_enable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 instructions_at_mig_enable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 branches_at_mig_enable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 L1_acc_at_mig_enable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 L1_ref_at_mig_enable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 L2_acc_at_mig_enable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 L2_ref_at_mig_enable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+u64 cycles_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 instructions_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 branches_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 L1_acc_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 L1_ref_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 L2_acc_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 L2_ref_at_mig_enable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
-u64 cycles_at_mig_disable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 instructions_at_mig_disable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 branches_at_mig_disable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 L1_acc_at_mig_disable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 L1_ref_at_mig_disable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 L2_acc_at_mig_disable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-u64 L2_ref_at_mig_disable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+u64 cycles_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 instructions_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 branches_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 L1_acc_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 L1_ref_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 L2_acc_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+u64 L2_ref_at_mig_disable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
 u64 select_32_mask = 0x00000000ffffffff;
 
@@ -110,58 +111,58 @@ struct capture_stats_per_cpu {
 	unsigned int from_PID;
 	unsigned int to_PID;
 
-	uint64_t time_before_reset; 	
-	uint64_t cycles_before_reset; 
+	uint64_t time_before_reset;
+	uint64_t cycles_before_reset;
 
-	uint64_t instructions_retired_before_reset; 
-	uint64_t branches_mispredicted_before_reset; 
+	uint64_t instructions_retired_before_reset;
+	uint64_t branches_mispredicted_before_reset;
 
-	uint64_t L1_accesses_before_reset; 
-	uint64_t L1_misses_before_reset; 
+	uint64_t L1_accesses_before_reset;
+	uint64_t L1_misses_before_reset;
 
-	uint64_t L2_accesses_before_reset; 
-	uint64_t L2_misses_before_reset; 
+	uint64_t L2_accesses_before_reset;
+	uint64_t L2_misses_before_reset;
 
-	uint64_t time; 	
-	uint64_t cycles; 
+	uint64_t time;
+	uint64_t cycles;
 
-	uint64_t instructions_retired; 
-	uint64_t branches_mispredicted; 
+	uint64_t instructions_retired;
+	uint64_t branches_mispredicted;
 
-	uint64_t L1_accesses; 
-	uint64_t L1_misses; 
+	uint64_t L1_accesses;
+	uint64_t L1_misses;
 
-	uint64_t L2_accesses; 
-	uint64_t L2_misses; 
+	uint64_t L2_accesses;
+	uint64_t L2_misses;
 
-	uint64_t time_on_exit; 		
-	uint64_t cycles_on_exit; 
+	uint64_t time_on_exit;
+	uint64_t cycles_on_exit;
 
-	uint64_t instructions_retired_on_exit; 
-	uint64_t branches_mispredicted_on_exit; 
+	uint64_t instructions_retired_on_exit;
+	uint64_t branches_mispredicted_on_exit;
 
-	uint64_t L1_accesses_on_exit; 
-	uint64_t L1_misses_on_exit; 
+	uint64_t L1_accesses_on_exit;
+	uint64_t L1_misses_on_exit;
 
-	uint64_t L2_accesses_on_exit; 
-	uint64_t L2_misses_on_exit; 
+	uint64_t L2_accesses_on_exit;
+	uint64_t L2_misses_on_exit;
 
 	int recordme;
 };
 
-volatile struct capture_stats_per_cpu stats_per_cpu_array[8];
+volatile struct capture_stats_per_cpu stats_per_cpu_array[INSTRUMENT_MOD_CORE_SIZE];
 
 int noinline add_schedule_to_inlist(struct capture_stats_per_cpu *struct_to_add);
 int noinline add_wraparound_to_global_sums(struct capture_stats_per_cpu *struct_to_add);
 
 
-struct scheduler_timing_data schd_timing_data[8];
+struct scheduler_timing_data schd_timing_data[INSTRUMENT_MOD_CORE_SIZE];
 /* Instrumentation Mod - Sched edition*/
 //DEFINE_PER_CPU(int, report_scheduling_PID_enable);
 
-unsigned int report_scheduling_PID_enable[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int report_scheduling_addtolist_counter[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int report_wraparound_addtolist_counter[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned int report_scheduling_PID_enable[INSTRUMENT_MOD_CORE_SIZE] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned long long int report_scheduling_addtolist_counter[INSTRUMENT_MOD_CORE_SIZE] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned long long int report_wraparound_addtolist_counter[INSTRUMENT_MOD_CORE_SIZE] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
 
 DEFINE_PER_CPU_SHARED_ALIGNED(struct rq, runqueues);
@@ -3726,10 +3727,10 @@ static void __sched notrace __schedule(bool preempt)
 
 		/* For the call a bit later to add_schedule_to_inlist.. */
 		cycles_read_here = 0;
-		asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(cycles_read_here)); 
+		asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(cycles_read_here));
 
 		L1ref_read_here = 0;
-		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */	
+		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */
 		asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(L1ref_read_here));		/* -> READ VALUE, should correspond to : 0x3 	uevt	L1D L1D_CACHE_REFILL  */
 		L1ref_read_here = L1ref_read_here & select_32_mask;
 
@@ -3749,7 +3750,7 @@ static void __sched notrace __schedule(bool preempt)
 		branches_read_here = branches_read_here & select_32_mask;
 
 		L2acc_read_here = 0;
-		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x4));			/* -> SELECT REG 4 */	
+		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x4));			/* -> SELECT REG 4 */
 		asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(L2acc_read_here));	/* -> READ VALUE, should correspond to : 0x16    uevt    L2  L2D_CACHE   L2D_CACHE_ACCESS  */
 		L2acc_read_here = L2acc_read_here & select_32_mask;
 
@@ -3776,14 +3777,14 @@ static void __sched notrace __schedule(bool preempt)
 		add_wraparound_to_global_sums(&stats_per_cpu_array[cpu]);
 
 		/* Reset Counters on entry before reading. */
-		asm volatile ("MSR PMCR_EL0, %0" :: "r"(0x057));  
+		asm volatile ("MSR PMCR_EL0, %0" :: "r"(0x057));
 
 		/* For the call a bit later to add_schedule_to_inlist.. */
 		cycles_read_here = 0;
-		asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(cycles_read_here)); 
+		asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(cycles_read_here));
 
 		L1ref_read_here = 0;
-		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */	
+		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */
 		asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(L1ref_read_here));		/* -> READ VALUE, should correspond to : 0x3 	uevt	L1D L1D_CACHE_REFILL  */
 		L1ref_read_here = L1ref_read_here & select_32_mask;
 
@@ -3803,7 +3804,7 @@ static void __sched notrace __schedule(bool preempt)
 		branches_read_here = branches_read_here & select_32_mask;
 
 		L2acc_read_here = 0;
-		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x4));			/* -> SELECT REG 4 */	
+		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x4));			/* -> SELECT REG 4 */
 		asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(L2acc_read_here));	/* -> READ VALUE, should correspond to : 0x16    uevt    L2  L2D_CACHE   L2D_CACHE_ACCESS  */
 		L2acc_read_here = L2acc_read_here & select_32_mask;
 
@@ -3900,7 +3901,7 @@ static void __sched notrace __schedule(bool preempt)
 	if (task_on_rq_queued(prev))
 		update_rq_clock(rq);
 
-	/* WARNING: This guy could be messing with prev more than we thought. 
+	/* WARNING: This guy could be messing with prev more than we thought.
 	It contains enqueue operations (it goes to fair.c -> pick_task_fair...)*/
 
 	next = pick_next_task(rq, prev, &rf);
@@ -3937,10 +3938,10 @@ static void __sched notrace __schedule(bool preempt)
 	/* For the call a bit later to adds_chedule_to_inlist.. */
 	if(scheduler_sum_of_times_enable == 1) {
 		cycles_read_here = 0;
-		asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(cycles_read_here)); 
+		asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(cycles_read_here));
 
 		L1ref_read_here = 0;
-		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */	
+		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */
 		asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(L1ref_read_here));		/* -> READ VALUE, should correspond to : 0x3 	uevt	L1D L1D_CACHE_REFILL  */
 		L1ref_read_here = L1ref_read_here & select_32_mask;
 
@@ -3960,7 +3961,7 @@ static void __sched notrace __schedule(bool preempt)
 		branches_read_here = branches_read_here & select_32_mask;
 
 		L2acc_read_here = 0;
-		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x4));			/* -> SELECT REG 4 */	
+		asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x4));			/* -> SELECT REG 4 */
 		asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(L2acc_read_here));	/* -> READ VALUE, should correspond to : 0x16    uevt    L2  L2D_CACHE   L2D_CACHE_ACCESS  */
 		L2acc_read_here = L2acc_read_here & select_32_mask;
 
@@ -3998,7 +3999,7 @@ static void __sched notrace __schedule(bool preempt)
 		}
 	}
 	/* Complete entry at this point. Note: It should be technically impossible to mess this up,
-	 * as preemption is disabled, and we should be in the same CPU unti the function exits. 
+	 * as preemption is disabled, and we should be in the same CPU unti the function exits.
 	 * However take nothing for granted
 	 */
 
@@ -4046,7 +4047,7 @@ static void __sched notrace __schedule(bool preempt)
 
 }
 
-/* Instrumentation Mod - Add global sum counters for wraparound */ 
+/* Instrumentation Mod - Add global sum counters for wraparound */
 int noinline add_wraparound_to_global_sums(struct capture_stats_per_cpu *struct_to_add){
 
 	unsigned int current_cpu_number = smp_processor_id();
@@ -4054,12 +4055,12 @@ int noinline add_wraparound_to_global_sums(struct capture_stats_per_cpu *struct_
 
 	report_wraparound_addtolist_counter[current_cpu_number]++;
 
-	diff = (struct_to_add->cycles_before_reset - struct_to_add->cycles_on_exit ); 
+	diff = (struct_to_add->cycles_before_reset - struct_to_add->cycles_on_exit );
 
 	if (diff < 0)
 		printk ("PANIC: WTF. Wrapround diff of cycles is negative \n");
 
-	wraparound_sum_of_times[current_cpu_number] += diff;	
+	wraparound_sum_of_times[current_cpu_number] += diff;
 	wraparound_sum_of_times_squared[current_cpu_number] += diff*diff;
 
 	/* Also keep sums for other counters */
@@ -4072,28 +4073,28 @@ int noinline add_wraparound_to_global_sums(struct capture_stats_per_cpu *struct_
 		printk ("PANIC: WTF. Wrapround diff of instructions is negative \n");
 
 	diff = ( struct_to_add->L1_accesses_before_reset - struct_to_add->L1_accesses_on_exit);
-	wraparound_sum_of_L1acc 			[current_cpu_number] += diff;	
+	wraparound_sum_of_L1acc 			[current_cpu_number] += diff;
 	wraparound_sum_of_L1acc_squared 	[current_cpu_number] += diff*diff;
 
 	if (diff < 0)
 		printk ("PANIC: WTF. Wrapround diff of L1 acceses is negative \n");
 
 	diff = ( struct_to_add->L1_misses_before_reset - struct_to_add->L1_misses_on_exit);
-	wraparound_sum_of_L1ref 			[current_cpu_number] += diff;	
+	wraparound_sum_of_L1ref 			[current_cpu_number] += diff;
 	wraparound_sum_of_L1ref_squared 	[current_cpu_number] += diff*diff;
 
 	if (diff < 0)
 		printk ("PANIC: WTF. Wrapround diff of L1 misses is negative \n");
 
-	diff = ( struct_to_add->L2_accesses_before_reset - struct_to_add->L2_accesses_on_exit); 
-	wraparound_sum_of_L2acc 			[current_cpu_number] += diff;	
+	diff = ( struct_to_add->L2_accesses_before_reset - struct_to_add->L2_accesses_on_exit);
+	wraparound_sum_of_L2acc 			[current_cpu_number] += diff;
 	wraparound_sum_of_L2acc_squared 	[current_cpu_number] += diff*diff;
 
 	if (diff < 0)
 		printk ("PANIC: WTF. Wrapround diff of L2 acceses is negative \n");
 
 	diff = ( struct_to_add->L2_misses_before_reset - struct_to_add->L2_misses_on_exit);
-	wraparound_sum_of_L2ref 			[current_cpu_number] += diff;	
+	wraparound_sum_of_L2ref 			[current_cpu_number] += diff;
 	wraparound_sum_of_L2ref_squared 	[current_cpu_number] += diff*diff;
 
 	if (diff < 0)
@@ -4129,11 +4130,11 @@ void global_schedule_list_reset(void *info){
 	/* No longer because we want to hold the total */
 	//report_scheduling_addtolist_counter[current_processor_id_temp] = 0;
 
-	printk("List delete done for CPU %d\n", current_processor_id_temp);		
+	printk("List delete done for CPU %d\n", current_processor_id_temp);
 
 	/* Re-Initialize */
 	INIT_LIST_HEAD(&schd_timing_data[current_processor_id_temp].schedules_timing);
-	printk("List INIT done for CPU %d\n", current_processor_id_temp);		
+	printk("List INIT done for CPU %d\n", current_processor_id_temp);
 }
 
 int noinline add_schedule_to_inlist(struct capture_stats_per_cpu *struct_to_add){
@@ -4148,7 +4149,7 @@ int noinline add_schedule_to_inlist(struct capture_stats_per_cpu *struct_to_add)
 	tmp_timing_data->at_beginning_of_function = struct_to_add->at_beginning_of_function;
 
 	tmp_timing_data->from_PID = struct_to_add->from_PID;
-	tmp_timing_data->to_PID = struct_to_add->to_PID; 
+	tmp_timing_data->to_PID = struct_to_add->to_PID;
 
 	tmp_timing_data->time = struct_to_add->time;
 	tmp_timing_data->cycles = struct_to_add->cycles;
@@ -4184,36 +4185,36 @@ int noinline add_schedule_to_inlist(struct capture_stats_per_cpu *struct_to_add)
 
 
 	/* Add the current diff. Since we are in the same CPU this should just be the second to last entry (the last entry would be middle) */
-	unsigned long long int diff = ( struct_to_add->cycles_on_exit - struct_to_add->cycles ); 
+	unsigned long long int diff = ( struct_to_add->cycles_on_exit - struct_to_add->cycles );
 
 	report_scheduling_addtolist_counter[current_cpu_number]++;
 
 	if (current_cpu_number != struct_to_add->at_cpu)
 		printk("PANIC IN INLIST: current cpu and thing number different\n");
 
-	scheduler_sum_of_times[current_cpu_number] += diff;	
+	scheduler_sum_of_times[current_cpu_number] += diff;
 	scheduler_sum_of_times_squared[current_cpu_number] += diff*diff;
 
 	/* Also keep sums for other counters now */
 
-	diff = ( struct_to_add->instructions_retired_on_exit - struct_to_add->instructions_retired ); 
+	diff = ( struct_to_add->instructions_retired_on_exit - struct_to_add->instructions_retired );
 	scheduler_sum_of_instructions 			[current_cpu_number] += diff;
 	scheduler_sum_of_instructions_squared 	[current_cpu_number] += diff*diff;
 
-	diff = ( struct_to_add->L1_accesses_on_exit - struct_to_add->L1_accesses ); 
-	scheduler_sum_of_L1acc 			[current_cpu_number] += diff;	
+	diff = ( struct_to_add->L1_accesses_on_exit - struct_to_add->L1_accesses );
+	scheduler_sum_of_L1acc 			[current_cpu_number] += diff;
 	scheduler_sum_of_L1acc_squared 	[current_cpu_number] += diff*diff;
 
-	diff = ( struct_to_add->L1_misses_on_exit - struct_to_add->L1_misses ); 
-	scheduler_sum_of_L1ref 			[current_cpu_number] += diff;	
+	diff = ( struct_to_add->L1_misses_on_exit - struct_to_add->L1_misses );
+	scheduler_sum_of_L1ref 			[current_cpu_number] += diff;
 	scheduler_sum_of_L1ref_squared 	[current_cpu_number] += diff*diff;
 
-	diff = ( struct_to_add->L2_accesses_on_exit - struct_to_add->L2_accesses); 
-	scheduler_sum_of_L2acc 			[current_cpu_number] += diff;	
+	diff = ( struct_to_add->L2_accesses_on_exit - struct_to_add->L2_accesses);
+	scheduler_sum_of_L2acc 			[current_cpu_number] += diff;
 	scheduler_sum_of_L2acc_squared 	[current_cpu_number] += diff*diff;
 
-	diff = ( struct_to_add->L2_misses_on_exit - struct_to_add->L2_misses ); 
-	scheduler_sum_of_L2ref 			[current_cpu_number] += diff;	
+	diff = ( struct_to_add->L2_misses_on_exit - struct_to_add->L2_misses );
+	scheduler_sum_of_L2ref 			[current_cpu_number] += diff;
 	scheduler_sum_of_L2ref_squared 	[current_cpu_number] += diff*diff;
 
 
@@ -4225,7 +4226,7 @@ int noinline add_schedule_to_inlist(struct capture_stats_per_cpu *struct_to_add)
 		kfree (tmp_timing_data); /* free node currently malloced and also everything in current list*/
 
 
-		//No reset just free the memory and reloop :) 
+		//No reset just free the memory and reloop :)
 
 		//global_schedule_list_reset(NULL);
 
@@ -6069,12 +6070,12 @@ void all_PMUs_read_and_print_on_enable(void * info){
 
 	r = 0;
 	/* Read counters for each event + Cycle Counter*/
-	asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(r));  /* -> Read cycle counter */	
+	asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(r));  /* -> Read cycle counter */
 	//printk ("CYCLE counter= %llu, for CPU %d \n", r, smp_processor_id() );
 	cycles_at_mig_enable[current_cpu_number] = r & select_32_mask;
 
 	r = 0;
-	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */	
+	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */
 	asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(r));
 	L1_ref_at_mig_enable[current_cpu_number] = r & select_32_mask;			/* -> READ VALUE, should correspond to : 0x3 	uevt	L1D L1D_CACHE_REFILL  */
 	//temp1 = r & select_32_mask;
@@ -6084,7 +6085,7 @@ void all_PMUs_read_and_print_on_enable(void * info){
 	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x1));			/* -> SELECT REG 1 */
 	asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(r));
 	L1_acc_at_mig_enable[current_cpu_number] = r & select_32_mask;			/* -> READ VALUE, should correspond to : 0x04 	uevt	L1D L1D_CACHE L1D_CACHE_ACCESS  */
-	//temp2 = r & select_32_mask;	
+	//temp2 = r & select_32_mask;
 	//printk ("L1D_CACHE_ACCESS = %llu, for CPU %d \n", r, smp_processor_id() );
 	//printk ("L1D_CACHE_MISSRATE (percent)= %llu, for CPU %d \n", (temp1*100)/temp2, smp_processor_id() );
 
@@ -6102,7 +6103,7 @@ void all_PMUs_read_and_print_on_enable(void * info){
 	//printk ("BRANCH_MISPRED= %llu, for CPU %d \n", r, smp_processor_id() );
 
 	r = 0;
-	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x4));			/* -> SELECT REG 0 */	
+	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x4));			/* -> SELECT REG 0 */
 	asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(r));
 	L2_acc_at_mig_enable[current_cpu_number] = r & select_32_mask;			/* -> READ VALUE, should correspond to : 0x16    uevt    L2  L2D_CACHE   L2D_CACHE_ACCESS  */
 	//temp1 = r & select_32_mask;
@@ -6129,12 +6130,12 @@ void all_PMUs_read_and_print_on_disable(void * info){
 
 	r = 0;
 	/* Read counters for each event + Cycle Counter*/
-	asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(r));  /* -> Read cycle counter */	
+	asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(r));  /* -> Read cycle counter */
 	//printk ("CYCLE counter= %llu, for CPU %d \n", r, smp_processor_id() );
 	cycles_at_mig_disable[current_cpu_number] = r;
 
 	r = 0;
-	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */	
+	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */
 	asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(r));
 	L1_ref_at_mig_disable[current_cpu_number] = r & select_32_mask;			/* -> READ VALUE, should correspond to : 0x3 	uevt	L1D L1D_CACHE_REFILL  */
 	//temp1 = r & select_32_mask;
@@ -6144,7 +6145,7 @@ void all_PMUs_read_and_print_on_disable(void * info){
 	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x1));			/* -> SELECT REG 1 */
 	asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(r));
 	L1_acc_at_mig_disable[current_cpu_number] = r & select_32_mask;			/* -> READ VALUE, should correspond to : 0x04 	uevt	L1D L1D_CACHE L1D_CACHE_ACCESS  */
-	//temp2 = r & select_32_mask;	
+	//temp2 = r & select_32_mask;
 	//printk ("L1D_CACHE_ACCESS = %llu, for CPU %d \n", r, smp_processor_id() );
 	//printk ("L1D_CACHE_MISSRATE (percent)= %llu, for CPU %d \n", (temp1*100)/temp2, smp_processor_id() );
 
@@ -6161,7 +6162,7 @@ void all_PMUs_read_and_print_on_disable(void * info){
 
 	//printk ("BRANCH_MISPRED= %llu, for CPU %d \n", r, smp_processor_id() );
 	r = 0;
-	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x4));			/* -> SELECT REG 0 */	
+	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x4));			/* -> SELECT REG 0 */
 	asm volatile("MRS %0, PMXEVCNTR_EL0" : "=r"(r));
 	L2_acc_at_mig_disable[current_cpu_number] = r & select_32_mask;			/* -> READ VALUE, should correspond to : 0x16    uevt    L2  L2D_CACHE   L2D_CACHE_ACCESS  */
 	//temp1 = r & select_32_mask;
@@ -6190,7 +6191,7 @@ void all_your_PMU_are_belong_to_us(void * info){
 
 
 	/* Setup counters for each event */
-	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */	
+	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x0));			/* -> SELECT REG 0 */
 	asm volatile("MSR PMXEVTYPER_EL0, %0" :: "r"(0x03));	/* -> ATTACH TO 0x3 	uevt	L1D L1D_CACHE_REFILL  */
 
 	asm volatile("MSR PMSELR_EL0, %0" :: "r"(0x1));			/* -> SELECT REG 1 */
@@ -6215,11 +6216,11 @@ void all_your_PMU_are_belong_to_us(void * info){
 	/* in general we enable all counters (including cycle counter) */
 	int32_t value = 1;
 
-	// peform reset:  
+	// peform reset:
 	//if (do_reset) {
 	value |= 2;     // reset all counters to zero
 	value |= 4;     // reset cycle counter to zero
-	//} 
+	//}
 
 	value |= 16;        // enable "export" (bit 4)
 	value |= 64;        // enable "long counter" enable bit (bit 6)
@@ -6232,7 +6233,7 @@ void all_your_PMU_are_belong_to_us(void * info){
 	//printk("PMCR_EL0  right before! setting VALUE: %llx . value_var = %llx \n", r, value);
 
 	// program the performance-counter control-register:
-	asm volatile ("MSR PMCR_EL0, %0" :: "r"(value));  
+	asm volatile ("MSR PMCR_EL0, %0" :: "r"(value));
 
 	//asm volatile("MRS %0, PMCR_EL0" : "=r"(r));
 	//	printk("PMCR_EL0 right after setting VALUE: %llx \n", r);
@@ -6240,8 +6241,8 @@ void all_your_PMU_are_belong_to_us(void * info){
 	//	asm volatile("MRS %0, PMCNTENSET_EL0" : "=r"(r));
 	//	printk("PMCNTENSET_EL0  right before! setting VALUE: %llx \n", r);
 
-	// enable all counters:  
-	asm volatile ("MSR PMCNTENSET_EL0, %0" :: "r"(0x8000ffff)); 
+	// enable all counters:
+	asm volatile ("MSR PMCNTENSET_EL0, %0" :: "r"(0x8000ffff));
 
 	//	asm volatile("MRS %0, PMCNTENSET_EL0" : "=r"(r));
 	//	printk("PMCNTENSET_EL0  right after setting VALUE: %llx \n", r);
@@ -6255,7 +6256,7 @@ void all_your_PMU_are_belong_to_us(void * info){
 	//asm volatile("MRS %0, PMOVSCLR_EL0" : "=r"(r));
 	//printk("PMOVSCLR_EL0  right after setting VALUE: %llx \n", r);
 
-	//r = 0;	
+	//r = 0;
 	//attempt to read cycles
 	asm volatile("MRS %0, PMCCNTR_EL0" : "=r"(r));
 	//cycles2 = r;
@@ -6279,7 +6280,7 @@ void noinline all_your_lists_are_belong_to_us(int destroy){
 
 		/* Warning this will cause a seg-fault if list empty. Find a fix to this! */
 
-		for (iterate_over_cpus_structs = 0; iterate_over_cpus_structs < 8; iterate_over_cpus_structs++){
+		for (iterate_over_cpus_structs = 0; iterate_over_cpus_structs < INSTRUMENT_MOD_CORE_SIZE; iterate_over_cpus_structs++){
 			list_for_each_safe(pos, q, &schd_timing_data[iterate_over_cpus_structs].schedules_timing){
 				tmp_sched_data = list_entry(pos, struct scheduler_timing_data, schedules_timing);
 				//printk("freeing item \n");
@@ -6289,7 +6290,7 @@ void noinline all_your_lists_are_belong_to_us(int destroy){
 
 			/* RESET the total calls - insertions that would be happening */
 			report_scheduling_addtolist_counter[iterate_over_cpus_structs] = 0;
-			
+
 			scheduler_sum_of_times[iterate_over_cpus_structs] = 0;
 			scheduler_sum_of_times_squared[iterate_over_cpus_structs] = 0;
 
@@ -6308,7 +6309,7 @@ void noinline all_your_lists_are_belong_to_us(int destroy){
 
 			/* Instrumentation Mod  - Wraparound stuff*/
 			report_wraparound_addtolist_counter[iterate_over_cpus_structs] = 0;
-			
+
 			wraparound_sum_of_times[iterate_over_cpus_structs]= 0;
 			wraparound_sum_of_times_squared[iterate_over_cpus_structs]= 0;
 
@@ -6325,20 +6326,20 @@ void noinline all_your_lists_are_belong_to_us(int destroy){
 			wraparound_sum_of_L2ref[iterate_over_cpus_structs]= 0;
 			wraparound_sum_of_L2ref_squared[iterate_over_cpus_structs]= 0;
 
-			printk("Reset for CPU %d\n", iterate_over_cpus_structs);		
+			printk("Reset for CPU %d\n", iterate_over_cpus_structs);
 
 		}
-		printk("deleted the list using list_for_each_safe()\n");		
+		printk("deleted the list using list_for_each_safe()\n");
 
 	}
 
 	else{
 		//Initialize
-		for (iterate_over_cpus_structs = 0; iterate_over_cpus_structs < 8; iterate_over_cpus_structs++){
+		for (iterate_over_cpus_structs = 0; iterate_over_cpus_structs < INSTRUMENT_MOD_CORE_SIZE; iterate_over_cpus_structs++){
 
 			/* RESET the total calls - insertions that would be happening */
 			report_scheduling_addtolist_counter[iterate_over_cpus_structs] = 0;
-			
+
 			scheduler_sum_of_times[iterate_over_cpus_structs] = 0;
 			scheduler_sum_of_times_squared[iterate_over_cpus_structs] = 0;
 
@@ -6357,7 +6358,7 @@ void noinline all_your_lists_are_belong_to_us(int destroy){
 
 			/* Instrumentation Mod  - Wraparound stuff*/
 			report_wraparound_addtolist_counter[iterate_over_cpus_structs] = 0;
-			
+
 			wraparound_sum_of_times[iterate_over_cpus_structs]= 0;
 			wraparound_sum_of_times_squared[iterate_over_cpus_structs]= 0;
 
@@ -6376,9 +6377,9 @@ void noinline all_your_lists_are_belong_to_us(int destroy){
 
 			printk("Reset on Initialize for CPU %d\n", iterate_over_cpus_structs);
 		}
-		for (iterate_over_cpus_structs = 0; iterate_over_cpus_structs < 8; iterate_over_cpus_structs++){
+		for (iterate_over_cpus_structs = 0; iterate_over_cpus_structs < INSTRUMENT_MOD_CORE_SIZE; iterate_over_cpus_structs++){
 			INIT_LIST_HEAD(&schd_timing_data[iterate_over_cpus_structs].schedules_timing);
-			printk("Initialize head for CPU %d\n", iterate_over_cpus_structs);		
+			printk("Initialize head for CPU %d\n", iterate_over_cpus_structs);
 
 		}
 	}
@@ -6420,7 +6421,7 @@ long sched_setmigrationlog(pid_t pid, unsigned int log)
 
 	//	all_your_PMU_are_belong_to_us();
 
-	/* Execute function on all CPUs. Last agument 1 means that the function 
+	/* Execute function on all CPUs. Last agument 1 means that the function
 	 * has a barrier and only returns when all CPUs finish this function
 	 */
 
@@ -6440,7 +6441,7 @@ long sched_setmigrationlog(pid_t pid, unsigned int log)
 	if (log == 2){
 
 		printk("Stop reporting Sched\n");
-		scheduler_sum_of_times_enable = 0;	
+		scheduler_sum_of_times_enable = 0;
 
 		/* Destroy Lists */
 		printk("Destroy Lists and Zeroing Counters\n");
@@ -6453,9 +6454,9 @@ long sched_setmigrationlog(pid_t pid, unsigned int log)
 
 		enable_system_wide_collection = 0; /* Make sure it's turned off by default */
 
-		printk("Enabling PMUS, and initialising 8 lists\n");
+		printk("Enabling PMUS, and initialising INSTRUMENT_MOD_CORE_SIZE lists\n");
 
-		on_each_cpu(all_your_PMU_are_belong_to_us, NULL, 1);		
+		on_each_cpu(all_your_PMU_are_belong_to_us, NULL, 1);
 
 		printk("Init Lists and Zeroing Counters\n");
 		all_your_lists_are_belong_to_us(0);
@@ -6468,7 +6469,7 @@ long sched_setmigrationlog(pid_t pid, unsigned int log)
 
 	}else if (log == 0) {
 		printk("Stop reporting Sched\n");
-		scheduler_sum_of_times_enable = 0;	
+		scheduler_sum_of_times_enable = 0;
 		on_each_cpu(all_PMUs_read_and_print_on_disable, NULL, 1);
 	}
 
@@ -6483,7 +6484,7 @@ long sched_setmigrationlog(pid_t pid, unsigned int log)
 		printk("Stop reporting migrations\n");
 
 		p->se.record_migrations = 0;
-		p->se.record_migrations_limit = 0;	
+		p->se.record_migrations_limit = 0;
 
 	}
 
