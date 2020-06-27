@@ -160,9 +160,9 @@ struct scheduler_timing_data schd_timing_data[INSTRUMENT_MOD_CORE_SIZE];
 /* Instrumentation Mod - Sched edition*/
 //DEFINE_PER_CPU(int, report_scheduling_PID_enable);
 
-unsigned int report_scheduling_PID_enable[INSTRUMENT_MOD_CORE_SIZE] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int report_scheduling_addtolist_counter[INSTRUMENT_MOD_CORE_SIZE] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-unsigned long long int report_wraparound_addtolist_counter[INSTRUMENT_MOD_CORE_SIZE] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned int report_scheduling_PID_enable[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int report_scheduling_addtolist_counter[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
+unsigned long long int report_wraparound_addtolist_counter[INSTRUMENT_MOD_CORE_SIZE] = INSTRUMENT_MOD_CORE_BUFF;
 
 
 DEFINE_PER_CPU_SHARED_ALIGNED(struct rq, runqueues);
